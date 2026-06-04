@@ -12,6 +12,7 @@ const BASE_WHATSAPP_MESSAGE =
 const navItems = [
   ["Soluções", "#solucoes"],
   ["Como funciona", "#metodo"],
+  ["Diagnóstico", "#diagnostico"],
   ["Planos", "#planos"],
   ["FAQ", "#faq"],
 ];
@@ -510,24 +511,31 @@ function FeatureCard({
 
 function ComplianceVisual() {
   return (
-    <div className="compliance-visual scroll-rise">
-      <div className="compliance-mark">CI</div>
-      <div className="status-card status-card-top">
-        <span>Prontidão</span>
-        <strong>67%</strong>
-      </div>
-      <div className="radar">
-        {provisionBlocks.map(([title], index) => (
-          <div className="radar-row" key={title}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <p>{title}</p>
-            <i />
-          </div>
+    <div className="compliance-visual compliance-visual-premium scroll-rise">
+      <div className="compliance-glow" />
+      <div className="compliance-list">
+        <span className="visual-kicker">Requisitos críticos</span>
+        {provisionBlocks.map(([title, text], index) => (
+          <article className="requirement-row" key={title}>
+            <div className="requirement-icon">
+              <Icon name={(["clock", "shield", "refresh", "file", "archive"] as IconName[])[index]} />
+            </div>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </article>
         ))}
       </div>
-      <div className="status-card status-card-bottom">
-        <span>Evidências</span>
-        <strong>Auditáveis</strong>
+      <div className="compliance-photo-card">
+        <img src={asset("/brand/cidi-specialist-dark.jpg")} alt="Especialista analisando documentação de conformidade" />
+        <div className="photo-status-card">
+          <Icon name="shield" />
+          <div>
+            <strong>Conformidade é confiança.</strong>
+            <span>Confiança também é reputação.</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -535,32 +543,15 @@ function ComplianceVisual() {
 
 function MonitoringVisual() {
   return (
-    <div className="monitor-visual scroll-rise">
-      <div className="monitor-topline">
-        <div>
-          <span>Operação monitorada</span>
-          <strong>Visão da serventia</strong>
-        </div>
-        <i>Atualizado agora</i>
+    <div className="monitor-visual monitor-visual-premium scroll-rise">
+      <img src={asset("/brand/cidi-monitoring-slide.png")} alt="Dashboard de monitoramento e conformidade da CIDI Tecnologia" />
+      <div className="monitor-float monitor-float-top">
+        <span>Monitoramento 24/7</span>
+        <strong>Online</strong>
       </div>
-      <div className="monitor-score">
-        <div className="score-ring">
-          <strong>82%</strong>
-          <span>saúde</span>
-        </div>
-        <div className="score-list">
-          {["Backup", "Acessos", "Firewall", "PCN / PRD"].map((item, index) => (
-            <div key={item}>
-              <span>{item}</span>
-              <i style={{ width: `${88 - index * 12}%` }} />
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="monitor-bars">
-        {[54, 72, 42, 84, 64, 92, 70].map((height, index) => (
-          <span key={index} style={{ height: `${height}%` }} />
-        ))}
+      <div className="monitor-float monitor-float-bottom">
+        <span>Ativos monitorados</span>
+        <strong>128</strong>
       </div>
     </div>
   );
@@ -722,7 +713,7 @@ export default function Home() {
       <header className="site-header">
         <Container className="header-inner">
           <a className="brand-logo" href="#topo" aria-label="CIDI Tecnologia">
-            <img src={asset("/brand/cidi-logo.png")} alt="CIDI Tecnologia" />
+            <img src={asset("/brand/cidi-logo-white.png")} alt="CIDI Tecnologia" />
           </a>
           <nav className="desktop-nav" aria-label="Navegação principal">
             {navItems.map(([label, href]) => (
@@ -743,14 +734,22 @@ export default function Home() {
         </Container>
       </header>
 
-      <section id="topo" className="hero-section">
-        <div className="hero-wave" />
-        <div className="dot-cloud" />
+      <section id="topo" className="hero-section hero-premium">
+        <div className="hero-noise" />
+        <div className="hero-circuit hero-circuit-left" />
+        <div className="hero-circuit hero-circuit-right" />
+        <div className="dot-cloud dot-cloud-dark" />
         <Container className="hero-grid">
           <div className="hero-copy">
-            <Eyebrow>Adequação ao Provimento CNJ nº 213/2026</Eyebrow>
-            <h1>
-              Seu cartório está em <span>conformidade</span> — ou apenas <span>funcionando?</span>
+            <Eyebrow dark>Adequação ao Provimento CNJ nº 213/2026</Eyebrow>
+            <h1 className="hero-title">
+              Seu cartório está
+              <br />
+              em <span>conformidade</span>
+              <br />
+              — ou apenas
+              <br />
+              <span>funcionando?</span>
             </h1>
             <p>
               A CIDI Tecnologia ajuda serventias extrajudiciais a identificar riscos, organizar evidências e iniciar a
@@ -758,14 +757,49 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <Button onClick={() => setDiagnosticOpen(true)}>Agendar diagnóstico</Button>
-              <Button href={whatsappHref} variant="secondary" icon="whatsapp">
+              <Button href={whatsappHref} variant="dark" icon="whatsapp">
                 Falar com um especialista
               </Button>
             </div>
+            <div className="hero-trust-line">
+              <span>Segurança</span>
+              <span>Disponibilidade</span>
+              <span>Documentação</span>
+              <span>Continuidade</span>
+            </div>
           </div>
-          <div className="hero-visual" aria-label="Visual de cartório com painel de conformidade">
+          <div className="hero-visual hero-visual-premium" aria-label="Visual de cartório com painel de conformidade">
             <div className="hero-halo" />
-            <img src={asset("/brand/cartorio-diagnostico.png")} alt="Cartório com painel de conformidade tecnológica" />
+            <div className="hero-photo-frame">
+              <img src={asset("/brand/cartorio-diagnostico.png")} alt="Cartório com painel de conformidade tecnológica" />
+            </div>
+            <div className="hero-dashboard-card">
+              <div className="dashboard-head">
+                <span>Conformidade e Operação</span>
+                <i>Atualizado agora</i>
+              </div>
+              <div className="dashboard-body">
+                <div className="dashboard-ring">
+                  <strong>100%</strong>
+                  <span>Conformidade</span>
+                </div>
+                <div className="dashboard-checks">
+                  {["Segurança", "Disponibilidade", "Documentação", "Continuidade"].map((item) => (
+                    <span key={item}>
+                      <Icon name="check" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="dashboard-foot">
+                <Icon name="shield" />
+                <span>Ambiente em conformidade</span>
+              </div>
+            </div>
+            <div className="hero-mini-monitor">
+              <img src={asset("/brand/cidi-monitoring-slide.png")} alt="Painel de monitoramento da CIDI Tecnologia" />
+            </div>
           </div>
           <div className="hero-pillar-grid hero-pillar-strip">
             {heroPillars.map(([icon, title, text], index) => (
@@ -784,12 +818,26 @@ export default function Home() {
       </section>
 
       <section id="riscos" className="section section-light">
-        <Container>
-          <SectionIntro
-            eyebrow="O problema invisível"
-            title="O maior risco não é a tecnologia falhar. É não conseguir provar que ela estava preparada."
-            text="Muitos cartórios funcionam normalmente todos os dias. Mas em uma fiscalização, incidente, perda de dados ou parada de sistema, as fragilidades aparecem."
-          />
+        <Container className="problem-showcase">
+          <div className="problem-copy">
+            <SectionIntro
+              align="left"
+              eyebrow="O problema invisível"
+              title="O maior risco não é a tecnologia falhar. É não conseguir provar que ela estava preparada."
+              text="Muitos cartórios funcionam normalmente todos os dias. Mas em uma fiscalização, incidente, perda de dados ou parada de sistema, as fragilidades aparecem."
+            />
+            <Button onClick={() => setDiagnosticOpen(true)} variant="ghost">
+              Identificar os riscos
+            </Button>
+          </div>
+          <div className="problem-media scroll-rise">
+            <img src={asset("/brand/cidi-consultora-office.jpg")} alt="Consultoria CIDI Tecnologia em ambiente institucional" />
+            <div className="problem-media-card">
+              <span>Painel de risco</span>
+              <strong>5 pontos de atenção</strong>
+              <p>Backup, acessos, documentação, continuidade e evidências precisam conversar.</p>
+            </div>
+          </div>
           <div className="cards-grid problem-grid">
             {invisibleRisks.map(([icon, title, text], index) => (
               <FeatureCard icon={icon as IconName} title={title} text={text} index={index} key={title} />
@@ -833,6 +881,9 @@ export default function Home() {
             title="Quando a serventia não está adequada, o impacto vai além da TI."
             text="A não conformidade pode gerar exposição operacional, fragilidade em auditorias, pressão sobre a titularidade e risco jurídico conforme a gravidade da ocorrência."
           />
+          <div className="risk-proof-media scroll-rise">
+            <img src={asset("/brand/cidi-risks-slide.png")} alt="Aplicação visual da CIDI Tecnologia sobre riscos e conformidade" />
+          </div>
           <div className="cards-grid four-grid">
             {impactCards.map(([icon, title, text], index) => (
               <FeatureCard icon={icon as IconName} title={title} text={text} index={index} key={title} />
@@ -862,6 +913,17 @@ export default function Home() {
                 </div>
               </article>
             ))}
+          </div>
+          <div className="method-proof-card scroll-rise">
+            <div>
+              <span>Parceria que gera confiança</span>
+              <h3>Você não precisa fazer isso sozinho.</h3>
+              <p>
+                A CIDI Tecnologia caminha ao seu lado em todas as etapas, com método, tecnologia e especialistas que
+                entendem a realidade dos cartórios.
+              </p>
+            </div>
+            <img src={asset("/brand/cidi-consultora-office.jpg")} alt="Reunião de diagnóstico e adequação da CIDI Tecnologia" />
           </div>
         </Container>
       </section>
@@ -908,10 +970,29 @@ export default function Home() {
               <Button onClick={() => setDiagnosticOpen(true)}>Iniciar diagnóstico agora</Button>
             </div>
             <div className="diagnostic-preview">
-              <span>Etapa atual</span>
-              <strong>Segurança e evidências</strong>
-              <i />
-              <p>10 perguntas essenciais para entender riscos críticos antes de uma fiscalização ou incidente.</p>
+              <div className="diagnostic-card-form">
+                <div className="diagnostic-card-head">
+                  <span>Diagnóstico de Conformidade</span>
+                  <strong>1 / 5</strong>
+                </div>
+                <i />
+                <h3>Qual o nível atual de evidências da sua serventia?</h3>
+                {["Organizado e testado", "Parcialmente documentado", "Não sei informar"].map((item, index) => (
+                  <span className={index === 1 ? "diagnostic-option active" : "diagnostic-option"} key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="diagnostic-card-result">
+                <span>Seu diagnóstico</span>
+                <div className="result-mini-ring">
+                  <strong>Risco moderado</strong>
+                </div>
+                <p>Oportunidades importantes de adequação ao Provimento 213/2026.</p>
+                <Button href={whatsappHref} icon="whatsapp">
+                  Falar com especialista
+                </Button>
+              </div>
             </div>
           </div>
         </Container>
@@ -1018,7 +1099,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <Container className="footer-inner">
-          <img src={asset("/brand/cidi-logo.png")} alt="CIDI Tecnologia" />
+          <img src={asset("/brand/cidi-logo-white.png")} alt="CIDI Tecnologia" />
           <p>CIDI Tecnologia. Tecnologia que dá segurança para você focar no que importa.</p>
         </Container>
       </footer>
