@@ -22,6 +22,12 @@ const heroSeals = [
   "Documentação e evidências",
 ];
 
+const heroMetrics = [
+  ["5", "pilares críticos"],
+  ["10", "perguntas iniciais"],
+  ["213", "referência CNJ"],
+];
+
 const invisibleRisks = [
   ["Backup sem teste", "Ter cópia de segurança não garante recuperação."],
   ["Acessos compartilhados", "Sem controle individual, a rastreabilidade fica comprometida."],
@@ -501,8 +507,8 @@ function DashboardMockup() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#7CE7FF]">Painel de diagnóstico</p>
             <h2 className="mt-2 text-2xl font-bold tracking-[-0.04em] text-white">Maturidade TIC</h2>
           </div>
-          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-[#0A5CFF] text-sm font-black text-white shadow-[0_18px_45px_rgba(10,92,255,.42)]">
-            C
+          <div className="brand-orbit" aria-label="CIDI Tecnologia">
+            <span>C</span>
           </div>
         </div>
 
@@ -763,6 +769,14 @@ export default function Home() {
             <div className="mt-10 grid gap-3 sm:grid-cols-2">
               {heroSeals.map((seal) => (
                 <div className="trust-chip" key={seal}>{seal}</div>
+              ))}
+            </div>
+            <div className="hero-metric-rail reveal delay-3" aria-label="Indicadores do diagnóstico CIDI Tecnologia">
+              {heroMetrics.map(([value, label]) => (
+                <div className="hero-metric" key={label}>
+                  <strong>{value}</strong>
+                  <span>{label}</span>
+                </div>
               ))}
             </div>
           </div>
