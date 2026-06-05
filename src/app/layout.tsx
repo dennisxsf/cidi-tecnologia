@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: "CIDI Tecnologia | Adequação Provimento CNJ 213/2026",
   description:
     "Landing page da CIDI Tecnologia para diagnóstico de adequação tecnológica, segurança, continuidade e documentação para cartórios.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

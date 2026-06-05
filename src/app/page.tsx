@@ -4,6 +4,7 @@ import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 
 const SITE_BASE = process.env.NODE_ENV === "production" ? "/cidi-tecnologia" : "";
 const asset = (path: string) => `${SITE_BASE}${path}`;
+const route = (path: string) => `${SITE_BASE}${path}`;
 
 const WHATSAPP_NUMBER = "5585999441907";
 const BASE_WHATSAPP_MESSAGE =
@@ -14,6 +15,7 @@ const navItems = [
   ["Como funciona", "#metodo"],
   ["Diagnóstico", "#diagnostico"],
   ["Planos", "#planos"],
+  ["Empresas", route("/empresas/")],
   ["FAQ", "#faq"],
 ];
 
@@ -1200,6 +1202,7 @@ export default function Home() {
             <span>WhatsApp: (85) 99944-1907</span>
             <span>E-mail: contato@ciditecnologia.com.br</span>
             <span>Instagram: @ciditecnologia</span>
+            <a href={route("/empresas/")}>Soluções de TI para empresas</a>
           </div>
         </Container>
       </section>
@@ -1207,7 +1210,10 @@ export default function Home() {
       <footer className="site-footer">
         <Container className="footer-inner">
           <img src={asset("/brand/cidi-logo-white.png")} alt="CIDI Tecnologia" />
-          <p>CIDI Tecnologia. Tecnologia que dá segurança para você focar no que importa.</p>
+          <p>
+            CIDI Tecnologia. Tecnologia que dá segurança para você focar no que importa.
+            <a href={route("/empresas/")}> Conheça também as soluções para empresas.</a>
+          </p>
         </Container>
       </footer>
 
