@@ -527,14 +527,36 @@ function ComplianceVisual() {
           </article>
         ))}
       </div>
-      <div className="compliance-photo-card">
-        <img src={asset("/brand/cidi-specialist-dark.jpg")} alt="Especialista analisando documentação de conformidade" />
-        <div className="photo-status-card">
-          <Icon name="shield" />
-          <div>
-            <strong>Conformidade é confiança.</strong>
-            <span>Confiança também é reputação.</span>
+      <div className="compliance-audit-board">
+        <div className="audit-board-top">
+          <img src={asset("/brand/cidi-logo-white.png")} alt="CIDI Tecnologia" />
+          <span>Provimento 213/2026</span>
+        </div>
+        <div className="audit-score-card">
+          <div className="audit-ring">
+            <strong>5</strong>
+            <span>frentes</span>
           </div>
+          <div>
+            <p>Checklist de aderência</p>
+            <h3>Do requisito técnico à evidência auditável.</h3>
+          </div>
+        </div>
+        <div className="evidence-flow">
+          {["Inventário", "Acessos", "Backup", "PCN / PRD"].map((item, index) => (
+            <span key={item} style={{ "--delay": `${index * 120}ms` } as CSSProperties}>
+              <Icon name={(["archive", "users", "refresh", "route"] as IconName[])[index]} />
+              {item}
+            </span>
+          ))}
+        </div>
+        <div className="audit-trail">
+          {["Política publicada", "Teste de recuperação", "Evidência anexada"].map((item) => (
+            <span key={item}>
+              <Icon name="check" />
+              {item}
+            </span>
+          ))}
         </div>
       </div>
     </div>
@@ -543,15 +565,53 @@ function ComplianceVisual() {
 
 function MonitoringVisual() {
   return (
-    <div className="monitor-visual monitor-visual-premium scroll-rise">
-      <img src={asset("/brand/cidi-monitoring-slide.png")} alt="Dashboard de monitoramento e conformidade da CIDI Tecnologia" />
-      <div className="monitor-float monitor-float-top">
-        <span>Monitoramento 24/7</span>
-        <strong>Online</strong>
+    <div className="monitor-visual monitor-visual-premium monitor-console scroll-rise">
+      <div className="monitor-console-head">
+        <div>
+          <span>Dashboard CIDI</span>
+          <strong>Visão de conformidade e operação</strong>
+        </div>
+        <i>Atualizado agora</i>
       </div>
-      <div className="monitor-float monitor-float-bottom">
-        <span>Ativos monitorados</span>
-        <strong>128</strong>
+      <div className="monitor-console-grid">
+        {[
+          ["Conformidade", "100%", "shield"],
+          ["Disponibilidade", "99,98%", "clock"],
+          ["Serviços monitorados", "24", "archive"],
+          ["Incidentes abertos", "2", "bolt"],
+        ].map(([label, value, icon]) => (
+          <article key={label}>
+            <Icon name={icon as IconName} />
+            <span>{label}</span>
+            <strong>{value}</strong>
+          </article>
+        ))}
+      </div>
+      <div className="monitor-main-row">
+        <div className="monitor-bars-panel">
+          <span>Requisitos críticos</span>
+          {["Segurança da informação", "Continuidade", "Documentação", "Planos e processos"].map((item, index) => (
+            <div className="monitor-line" key={item}>
+              <p>{item}</p>
+              <i style={{ width: `${92 - index * 7}%` }} />
+            </div>
+          ))}
+        </div>
+        <div className="monitor-radar-card">
+          <div className="monitor-radar-ring">
+            <strong>1000</strong>
+            <span>score</span>
+          </div>
+          <p>Nível máximo de aderência operacional.</p>
+        </div>
+      </div>
+      <div className="monitor-feed">
+        {["Backup concluído", "Evidência registrada", "Acesso revisado"].map((item, index) => (
+          <span key={item} style={{ "--delay": `${index * 140}ms` } as CSSProperties}>
+            <Icon name="check" />
+            {item}
+          </span>
+        ))}
       </div>
     </div>
   );
@@ -830,12 +890,26 @@ export default function Home() {
               Identificar os riscos
             </Button>
           </div>
-          <div className="problem-media scroll-rise">
-            <img src={asset("/brand/cidi-consultora-office.jpg")} alt="Consultoria CIDI Tecnologia em ambiente institucional" />
+          <div className="problem-media problem-console scroll-rise">
+            <div className="problem-console-head">
+              <span>Análise preventiva</span>
+              <strong>O risco aparece antes da parada.</strong>
+            </div>
+            <div className="risk-signal-map">
+              {invisibleRisks.map(([icon, title], index) => (
+                <article key={title} style={{ "--delay": `${index * 90}ms` } as CSSProperties}>
+                  <Icon name={icon as IconName} />
+                  <div>
+                    <strong>{title}</strong>
+                    <span>{["Sem validação", "Sem rastreio", "Sem histórico", "Sem plano", "Sem registro"][index]}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
             <div className="problem-media-card">
               <span>Painel de risco</span>
-              <strong>5 pontos de atenção</strong>
-              <p>Backup, acessos, documentação, continuidade e evidências precisam conversar.</p>
+              <strong>5 fragilidades invisíveis</strong>
+              <p>Quando não há evidência, a defesa técnica depende de memória, improviso e sorte.</p>
             </div>
           </div>
           <div className="cards-grid problem-grid">
@@ -881,8 +955,23 @@ export default function Home() {
             title="Quando a serventia não está adequada, o impacto vai além da TI."
             text="A não conformidade pode gerar exposição operacional, fragilidade em auditorias, pressão sobre a titularidade e risco jurídico conforme a gravidade da ocorrência."
           />
-          <div className="risk-proof-media scroll-rise">
-            <img src={asset("/brand/cidi-risks-slide.png")} alt="Aplicação visual da CIDI Tecnologia sobre riscos e conformidade" />
+          <div className="risk-proof-media risk-impact-console scroll-rise">
+            <div className="risk-impact-head">
+              <span>Matriz de impacto</span>
+              <strong>O problema técnico vira risco institucional.</strong>
+            </div>
+            <div className="risk-impact-grid">
+              {impactCards.map(([icon, title, text], index) => (
+                <article key={title} style={{ "--delay": `${index * 110}ms` } as CSSProperties}>
+                  <Icon name={icon as IconName} />
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                  <span>atenção</span>
+                </article>
+              ))}
+            </div>
           </div>
           <div className="cards-grid four-grid">
             {impactCards.map(([icon, title, text], index) => (
@@ -923,7 +1012,25 @@ export default function Home() {
                 entendem a realidade dos cartórios.
               </p>
             </div>
-            <img src={asset("/brand/cidi-consultora-office.jpg")} alt="Reunião de diagnóstico e adequação da CIDI Tecnologia" />
+            <div className="method-ops-board">
+              <div className="method-ops-head">
+                <span>Plano assistido</span>
+                <strong>Da análise à sustentação</strong>
+              </div>
+              {[
+                ["Técnico", "Infraestrutura, backup e segurança"],
+                ["Documental", "Dossiê, evidências, PCN e PRD"],
+                ["Gestão", "Prioridades, responsáveis e prazos"],
+              ].map(([title, text], index) => (
+                <article key={title} style={{ "--delay": `${index * 120}ms` } as CSSProperties}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h4>{title}</h4>
+                    <p>{text}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
