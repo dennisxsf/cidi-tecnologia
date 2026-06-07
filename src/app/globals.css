@@ -3955,15 +3955,26 @@ a {
 .companies-check-list li {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   color: rgba(255, 255, 255, 0.78);
 }
 
-.companies-status-list svg,
-.companies-check-list svg {
+.companies-status-list svg {
   width: 18px;
   height: 18px;
   color: #18bf73;
+}
+
+.companies-check-list svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  padding: 5px;
+  border: 1px solid rgba(10, 92, 255, 0.78);
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(10, 92, 255, 0.08);
+  box-shadow: 0 0 24px rgba(10, 92, 255, 0.24);
 }
 
 .companies-mini-panel {
@@ -4123,8 +4134,9 @@ a {
 .companies-showcase {
   overflow: hidden;
   background:
-    radial-gradient(circle at 80% 22%, rgba(10, 92, 255, 0.32), transparent 30%),
-    linear-gradient(135deg, #07142b 0%, #051025 100%);
+    radial-gradient(circle at 88% 18%, rgba(10, 92, 255, 0.34), transparent 28%),
+    radial-gradient(circle at 12% 70%, rgba(10, 92, 255, 0.18), transparent 28%),
+    linear-gradient(135deg, #07142b 0%, #061126 52%, #020a18 100%);
   color: #ffffff;
 }
 
@@ -4134,11 +4146,26 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.42;
+  opacity: 0.5;
   background-image:
-    linear-gradient(115deg, transparent 0 44%, rgba(10, 92, 255, 0.28) 44% 44.3%, transparent 44.3%),
-    radial-gradient(circle at 75% 35%, rgba(10, 92, 255, 0.78) 0 3px, transparent 4px),
-    radial-gradient(circle at 60% 65%, rgba(255, 255, 255, 0.64) 0 2px, transparent 3px);
+    linear-gradient(135deg, transparent 0 28%, rgba(10, 92, 255, 0.32) 28% 28.16%, transparent 28.16%),
+    linear-gradient(135deg, transparent 0 76%, rgba(10, 92, 255, 0.42) 76% 76.14%, transparent 76.14%),
+    radial-gradient(circle at 54% 18%, rgba(10, 92, 255, 0.72) 0 3px, transparent 4px),
+    radial-gradient(circle at 78% 24%, rgba(10, 92, 255, 0.72) 0 3px, transparent 4px),
+    radial-gradient(circle at 4% 80%, rgba(10, 92, 255, 0.68) 0 2px, transparent 3px);
+  pointer-events: none;
+}
+
+.companies-showcase::after {
+  content: "";
+  position: absolute;
+  left: -8%;
+  bottom: -34%;
+  width: 52%;
+  height: 72%;
+  border: 1px solid rgba(10, 92, 255, 0.2);
+  border-radius: 42px;
+  transform: rotate(-42deg);
   pointer-events: none;
 }
 
@@ -4152,6 +4179,11 @@ a {
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   align-items: center;
   gap: clamp(34px, 6vw, 76px);
+}
+
+.companies-showcase-grid {
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: clamp(34px, 5vw, 64px);
 }
 
 .companies-showcase-grid > *,
@@ -4169,6 +4201,18 @@ a {
   color: #ffffff;
 }
 
+.companies-showcase-copy h2 {
+  max-width: 620px;
+  font-size: clamp(2.35rem, 3.25vw, 3.35rem);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.companies-showcase-copy h2 span {
+  color: var(--companies-blue);
+  text-shadow: 0 0 34px rgba(10, 92, 255, 0.26);
+}
+
 .companies-showcase p,
 .companies-cartorio-bridge p,
 .companies-final p {
@@ -4177,31 +4221,125 @@ a {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.companies-showcase-copy p {
+  max-width: 590px;
+  font-size: clamp(1.04rem, 1.3vw, 1.24rem);
+  line-height: 1.68;
+}
+
 .companies-check-list {
   display: grid;
-  gap: 14px;
-  margin: 30px 0 0;
+  gap: 18px;
+  margin: 34px 0 0;
   padding: 0;
   list-style: none;
 }
 
+.companies-showcase-action {
+  width: fit-content;
+  margin-top: 32px;
+}
+
 .companies-showcase-panel {
   position: relative;
-  min-height: 500px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 34px;
+  min-height: 560px;
+  border: 1px solid rgba(125, 177, 255, 0.3);
+  border-radius: 36px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 44px 130px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(10, 92, 255, 0.08);
+}
+
+.companies-showcase-photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(7, 20, 43, 0.18), transparent 34%),
+    linear-gradient(180deg, rgba(10, 92, 255, 0.16), transparent 22%, rgba(7, 20, 43, 0.08));
+  pointer-events: none;
+}
+
+.companies-showcase-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 0 70px rgba(10, 92, 255, 0.1);
+  pointer-events: none;
 }
 
 .companies-showcase-panel img {
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 560px;
   display: block;
   object-fit: cover;
-  opacity: 0.96;
+  object-position: center;
+  opacity: 0.98;
+}
+
+.companies-photo-circuit {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  pointer-events: none;
+}
+
+.companies-photo-circuit-one {
+  top: 68px;
+  left: 112px;
+  width: 86px;
+  height: 154px;
+  border-left: 2px solid rgba(10, 92, 255, 0.68);
+  border-top: 2px solid rgba(10, 92, 255, 0.68);
+  border-radius: 0 0 0 18px;
+}
+
+.companies-photo-circuit-one::before,
+.companies-photo-circuit-one::after,
+.companies-photo-circuit-two::before,
+.companies-photo-circuit-two::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 99px;
+  background: #0a5cff;
+  box-shadow: 0 0 18px rgba(10, 92, 255, 0.85);
+}
+
+.companies-photo-circuit-one::before {
+  left: -4px;
+  top: -4px;
+}
+
+.companies-photo-circuit-one::after {
+  left: -4px;
+  bottom: -4px;
+}
+
+.companies-photo-circuit-two {
+  left: 36%;
+  bottom: 30%;
+  width: 92px;
+  height: 42px;
+  border-top: 2px solid rgba(10, 92, 255, 0.55);
+  transform: rotate(34deg);
+}
+
+.companies-photo-circuit-two::before {
+  left: -3px;
+  top: -4px;
+}
+
+.companies-photo-circuit-two::after {
+  right: -3px;
+  top: -4px;
+  background: transparent;
+  border: 2px solid rgba(125, 177, 255, 0.9);
 }
 
 .companies-showcase-glass {
@@ -4690,6 +4828,29 @@ a {
     width: calc(100vw - 24px);
     max-width: calc(100vw - 24px);
     justify-self: center;
+  }
+
+  .companies-showcase-grid,
+  .companies-showcase-copy,
+  .companies-showcase-panel {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    justify-self: center;
+  }
+
+  .companies-showcase-copy h2 {
+    max-width: 100%;
+    font-size: clamp(1.55rem, 6.9vw, 1.9rem);
+    line-height: 1.16;
+    overflow-wrap: anywhere;
+  }
+
+  .companies-showcase-copy h2 br {
+    display: none;
+  }
+
+  .companies-showcase-copy p {
+    font-size: 0.98rem;
   }
 
   .companies-hero-copy > p,

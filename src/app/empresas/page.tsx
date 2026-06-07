@@ -424,19 +424,28 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <section className="companies-section companies-showcase">
+      <section className="companies-section companies-showcase" id="visibilidade">
         <div className="companies-container companies-showcase-grid">
-          <div>
+          <div className="companies-showcase-copy">
             <SectionLabel dark>Visibilidade e controle</SectionLabel>
-            <h2>Quando a TI é organizada, a gestão enxerga antes do problema virar urgência.</h2>
+            <h2>
+              Quando a <span>TI</span> é
+              <br />
+              organizada, a gestão
+              <br />
+              enxerga <span>riscos</span> antes
+              <br />
+              que virem urgência.
+            </h2>
             <p>
               Empresas perdem produtividade quando dependem de correções apressadas, documentação incompleta e suporte
-              sem histórico. A CIDI Tecnologia cria uma base técnica mais clara para operar, evoluir e decidir.
+              sem histórico. A CIDI Tecnologia organiza a operação para dar visibilidade, continuidade e base técnica
+              para decidir com mais segurança.
             </p>
             <ul className="companies-check-list">
               <li>
                 <Icon name="check" />
-                Ativos, acessos e serviços críticos documentados.
+                Ativos, acessos e serviços críticos mapeados.
               </li>
               <li>
                 <Icon name="check" />
@@ -444,16 +453,22 @@ export default function EmpresasPage() {
               </li>
               <li>
                 <Icon name="check" />
-                Plano técnico alinhado à realidade e ao ritmo da empresa.
+                Base técnica clara para operar, evoluir e decidir.
               </li>
             </ul>
-          </div>
-          <div className="companies-showcase-panel">
-            <img src={asset("/brand/cidi-monitoring-slide.png")} alt="Dashboard de monitoramento CIDI Tecnologia" />
-            <div className="companies-showcase-glass">
-              <strong>Monitoramento 24/7</strong>
-              <span>Indicadores, alertas e evidências em um único fluxo.</span>
+            <div className="companies-showcase-action">
+              <Button href={whatsappHref} variant="secondary">
+                Falar com um especialista
+              </Button>
             </div>
+          </div>
+          <div className="companies-showcase-panel companies-showcase-photo-frame">
+            <img
+              src={asset("/brand/cidi-visibilidade-controle.png")}
+              alt="Equipe CIDI Tecnologia analisando indicadores de operação monitorada"
+            />
+            <span className="companies-photo-circuit companies-photo-circuit-one" />
+            <span className="companies-photo-circuit companies-photo-circuit-two" />
           </div>
         </div>
       </section>
