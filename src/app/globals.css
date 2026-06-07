@@ -4203,9 +4203,9 @@ a {
 
 .companies-showcase-copy h2 {
   max-width: 620px;
-  font-size: clamp(2.35rem, 3.25vw, 3.35rem);
+  font-size: clamp(2.1rem, 2.95vw, 3.05rem);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.1;
 }
 
 .companies-showcase-copy h2 span {
@@ -4221,23 +4221,31 @@ a {
   color: rgba(255, 255, 255, 0.72);
 }
 
-.companies-showcase-copy p {
-  max-width: 590px;
-  font-size: clamp(1.04rem, 1.3vw, 1.24rem);
-  line-height: 1.68;
-}
-
 .companies-check-list {
   display: grid;
   gap: 18px;
-  margin: 34px 0 0;
+  margin: 42px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .companies-showcase-action {
   width: fit-content;
-  margin-top: 32px;
+  margin-top: 34px;
+}
+
+.companies-showcase-media {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.companies-showcase-caption {
+  max-width: 720px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: clamp(0.84rem, 0.9vw, 0.94rem);
+  line-height: 1.66;
 }
 
 .companies-showcase-panel {
@@ -4832,6 +4840,7 @@ a {
 
   .companies-showcase-grid,
   .companies-showcase-copy,
+  .companies-showcase-media,
   .companies-showcase-panel {
     width: calc(100vw - 24px);
     max-width: calc(100vw - 24px);
@@ -4840,8 +4849,8 @@ a {
 
   .companies-showcase-copy h2 {
     max-width: 100%;
-    font-size: clamp(1.55rem, 6.9vw, 1.9rem);
-    line-height: 1.16;
+    font-size: clamp(1.48rem, 6.3vw, 1.78rem);
+    line-height: 1.2;
     overflow-wrap: anywhere;
   }
 
@@ -4849,8 +4858,24 @@ a {
     display: none;
   }
 
-  .companies-showcase-copy p {
-    font-size: 0.98rem;
+  .companies-showcase .companies-check-list {
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .companies-showcase-action {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .companies-showcase-media {
+    gap: 16px;
+  }
+
+  .companies-showcase-caption {
+    padding: 0 2px;
+    font-size: 0.86rem;
+    line-height: 1.62;
   }
 
   .companies-hero-copy > p,

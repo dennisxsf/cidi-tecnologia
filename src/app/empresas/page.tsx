@@ -437,11 +437,6 @@ export default function EmpresasPage() {
               <br />
               que virem urgência.
             </h2>
-            <p>
-              Empresas perdem produtividade quando dependem de correções apressadas, documentação incompleta e suporte
-              sem histórico. A CIDI Tecnologia organiza a operação para dar visibilidade, continuidade e base técnica
-              para decidir com mais segurança.
-            </p>
             <ul className="companies-check-list">
               <li>
                 <Icon name="check" />
@@ -462,13 +457,20 @@ export default function EmpresasPage() {
               </Button>
             </div>
           </div>
-          <div className="companies-showcase-panel companies-showcase-photo-frame">
-            <img
-              src={asset("/brand/cidi-visibilidade-controle.png")}
-              alt="Equipe CIDI Tecnologia analisando indicadores de operação monitorada"
-            />
-            <span className="companies-photo-circuit companies-photo-circuit-one" />
-            <span className="companies-photo-circuit companies-photo-circuit-two" />
+          <div className="companies-showcase-media">
+            <div className="companies-showcase-panel companies-showcase-photo-frame">
+              <img
+                src={asset("/brand/cidi-visibilidade-controle.png")}
+                alt="Equipe CIDI Tecnologia analisando indicadores de operação monitorada"
+              />
+              <span className="companies-photo-circuit companies-photo-circuit-one" />
+              <span className="companies-photo-circuit companies-photo-circuit-two" />
+            </div>
+            <p className="companies-showcase-caption">
+              Empresas perdem produtividade quando dependem de correções apressadas, documentação incompleta e suporte
+              sem histórico. A CIDI Tecnologia organiza a operação para dar visibilidade, continuidade e base técnica
+              para decidir com mais segurança.
+            </p>
           </div>
         </div>
       </section>
