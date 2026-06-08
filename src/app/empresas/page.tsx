@@ -122,13 +122,13 @@ const method: Array<[IconName, string, string]> = [
   ],
 ];
 
-const sectors = [
-  "Escritórios",
-  "Clínicas",
-  "Indústrias",
-  "Comércios",
-  "Serviços",
-  "Operações administrativas",
+const sectors: Array<[IconName, string]> = [
+  ["building", "Escritórios"],
+  ["activity", "Clínicas"],
+  ["stack", "Indústrias"],
+  ["checklist", "Comércios"],
+  ["strategy", "Serviços"],
+  ["network", "Operações administrativas"],
 ];
 
 function Icon({ name }: { name: IconName }) {
@@ -564,14 +564,20 @@ export default function EmpresasPage() {
         <div className="companies-container companies-advantages-grid">
           <div className="companies-advantages-copy">
             <SectionLabel>Por que escolher a CIDI Tecnologia</SectionLabel>
-            <h2>Tecnologia com proximidade, método e visão de continuidade.</h2>
+            <h2>
+              Tecnologia com proximidade, método e visão de <span>continuidade.</span>
+            </h2>
+            <span className="companies-heading-rule" aria-hidden="true" />
             <p>
               A CIDI Tecnologia não entrega apenas manutenção pontual. O trabalho combina orientação técnica, suporte
               recorrente, documentação, segurança e evolução do ambiente.
             </p>
             <div className="companies-sector-strip">
-              {sectors.map((sector) => (
-                <span key={sector}>{sector}</span>
+              {sectors.map(([icon, sector]) => (
+                <span key={sector}>
+                  <Icon name={icon} />
+                  {sector}
+                </span>
               ))}
             </div>
           </div>
