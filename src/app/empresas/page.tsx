@@ -13,6 +13,10 @@ const whatsappHref = whatsappLink(
   "Olá, CIDI Tecnologia. Gostaria de conversar sobre suporte, infraestrutura e soluções de TI para minha empresa."
 );
 
+const cartorioDiagnosisHref = whatsappLink(
+  "Olá, CIDI Tecnologia. Gostaria de agendar um diagnóstico para adequação tecnológica do meu cartório ao Provimento CNJ nº 213/2026."
+);
+
 export const metadata: Metadata = {
   title: "CIDI Tecnologia | TI, suporte e soluções digitais para empresas",
   description:
@@ -96,6 +100,29 @@ const advantages: Array<[IconName, string, string]> = [
     "lock",
     "Confiança operacional",
     "Processos pensados para estabilidade, rastreabilidade, proteção de dados e continuidade.",
+  ],
+];
+
+const cartorioSpecialties: Array<[IconName, string, string]> = [
+  [
+    "search",
+    "Diagnóstico e adequação técnica",
+    "Mapeamento de riscos, infraestrutura e prioridades.",
+  ],
+  [
+    "pulse",
+    "Backup, evidências e continuidade",
+    "Mais controle para reduzir falhas e responder com segurança.",
+  ],
+  [
+    "headset",
+    "Suporte especializado para serventias",
+    "Atendimento próximo, orientação técnica e acompanhamento.",
+  ],
+  [
+    "checklist",
+    "Documentação e conformidade",
+    "Organização de registros, acessos e processos críticos.",
   ],
 ];
 
@@ -599,26 +626,43 @@ export default function EmpresasPage() {
 
       <section className="companies-section companies-cartorio-bridge" id="cartorios">
         <div className="companies-container companies-bridge-grid">
-          <div>
+          <div className="companies-bridge-copy">
             <SectionLabel dark>Especialidade em cartórios</SectionLabel>
-            <h2>A CIDI Tecnologia também tem uma landing dedicada à adequação de cartórios.</h2>
+            <h2>Tecnologia preparada para a rotina, a segurança e a conformidade dos cartórios.</h2>
             <p>
-              Para serventias extrajudiciais, criamos uma experiência específica para diagnóstico, evidências,
-              continuidade operacional e adequação ao Provimento CNJ nº 213/2026.
+              A CIDI Tecnologia apoia serventias extrajudiciais com diagnóstico técnico, infraestrutura, backup,
+              segurança da informação, documentação e continuidade operacional — com visão prática para adequação ao
+              Provimento CNJ nº 213/2026.
             </p>
-            <div className="companies-actions">
-              <Button href={route("/")}>Ver soluções para cartórios</Button>
-              <Button href={whatsappHref} variant="secondary" icon="whatsapp">
-                Conversar com especialista
+
+            <div className="companies-bridge-features">
+              {cartorioSpecialties.map(([icon, title, text], index) => (
+                <article className="companies-bridge-feature" style={{ "--i": index } as CSSProperties} key={title}>
+                  <span className="companies-icon">
+                    <Icon name={icon} />
+                  </span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="companies-actions companies-bridge-actions">
+              <Button href={cartorioDiagnosisHref} icon="whatsapp">
+                Falar com um especialista
+              </Button>
+              <Button href={cartorioDiagnosisHref} variant="secondary">
+                Agendar diagnóstico
               </Button>
             </div>
           </div>
           <div className="companies-bridge-card">
-            <img src={asset("/brand/cartorio-diagnostico.png")} alt="Landing de diagnóstico para cartórios" />
-            <div className="companies-bridge-badge">
-              <Icon name="building" />
-              <span>Cartórios e serventias</span>
-            </div>
+            <img
+              src={asset("/brand/ambiente_moderno_de_cartorio_e_conformidade.png")}
+              alt="Ambiente moderno de cartório com painel de conformidade e continuidade operacional"
+            />
           </div>
         </div>
       </section>

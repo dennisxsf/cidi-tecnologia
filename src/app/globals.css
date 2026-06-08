@@ -4074,6 +4074,7 @@ a {
 
 .companies-service-card,
 .companies-advantage-card,
+.companies-bridge-feature,
 .companies-method-step {
   animation: companies-rise linear both;
   animation-timeline: view();
@@ -4908,28 +4909,119 @@ a {
 .companies-cartorio-bridge {
   overflow: hidden;
   background:
-    radial-gradient(circle at 70% 18%, rgba(10, 92, 255, 0.3), transparent 32%),
-    linear-gradient(135deg, #061126, #07142b);
+    radial-gradient(circle at 82% 18%, rgba(10, 92, 255, 0.34), transparent 30%),
+    radial-gradient(circle at 12% 74%, rgba(10, 92, 255, 0.16), transparent 30%),
+    linear-gradient(135deg, #07142b 0%, #061126 54%, #030b19 100%);
   color: #ffffff;
 }
 
 .companies-bridge-grid {
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 0.98fr) minmax(460px, 0.9fr);
+  gap: clamp(38px, 6vw, 82px);
+  align-items: center;
+}
+
+.companies-bridge-copy h2 {
+  max-width: 680px;
+  font-size: clamp(2rem, 3.1vw, 3.35rem);
+  line-height: 1.1;
+}
+
+.companies-bridge-copy > p {
+  max-width: 720px;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.companies-bridge-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.companies-bridge-feature {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(112, 164, 255, 0.16);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.045)),
+    rgba(255, 255, 255, 0.04);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.companies-bridge-feature .companies-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(10, 92, 255, 0.12);
+  color: #7fb3ff;
+}
+
+.companies-bridge-feature .companies-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.companies-bridge-feature h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1rem, 1.12vw, 1.12rem);
+  line-height: 1.25;
+}
+
+.companies-bridge-feature p {
+  max-width: none;
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.companies-bridge-actions {
+  margin-top: 34px;
 }
 
 .companies-bridge-card {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 10px;
+  border: 1px solid rgba(79, 143, 255, 0.36);
   border-radius: 34px;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.34);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    rgba(8, 27, 61, 0.58);
+  box-shadow:
+    0 38px 120px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 70px rgba(10, 92, 255, 0.16);
   overflow: hidden;
 }
 
+.companies-bridge-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 82% 10%, rgba(10, 92, 255, 0.48), transparent 24%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 28%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .companies-bridge-card img {
+  position: relative;
   display: block;
   width: 100%;
-  min-height: 420px;
+  min-height: 610px;
+  max-height: 760px;
+  border-radius: 26px;
   object-fit: cover;
   object-position: center;
 }
@@ -5078,6 +5170,10 @@ a {
 
   .companies-final-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .companies-bridge-features {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -5324,6 +5420,20 @@ a {
   .companies-bridge-card img {
     min-height: 340px;
   }
+
+  .companies-bridge-card {
+    padding: 8px;
+    border-radius: 28px;
+  }
+
+  .companies-bridge-card img {
+    max-height: 560px;
+    border-radius: 22px;
+  }
+
+  .companies-bridge-feature {
+    padding: 16px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -5418,6 +5528,51 @@ a {
     left: 14px;
     right: 14px;
     bottom: 14px;
+  }
+
+  .companies-bridge-copy h2 {
+    font-size: clamp(1.82rem, 8vw, 2.35rem);
+    line-height: 1.14;
+  }
+
+  .companies-bridge-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .companies-bridge-copy,
+  .companies-bridge-features,
+  .companies-bridge-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .companies-bridge-features {
+    gap: 12px;
+  }
+
+  .companies-bridge-feature {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .companies-bridge-feature h3,
+  .companies-bridge-feature p {
+    max-width: 100%;
+  }
+
+  .companies-bridge-actions {
+    width: 100%;
+  }
+
+  .companies-bridge-actions .companies-btn {
+    width: 100%;
+  }
+
+  .companies-bridge-card img {
+    min-height: 420px;
+    object-position: center;
   }
 
   .companies-method-heading h2 {
