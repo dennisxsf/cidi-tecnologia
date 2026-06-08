@@ -47,36 +47,81 @@ type IconName =
   | "strategy"
   | "whatsapp";
 
-const services: Array<[IconName, string, string]> = [
+const infrastructureHighlights: Array<[IconName, string]> = [
+  ["shield", "Alta disponibilidade"],
+  ["lock", "Segurança integrada"],
+  ["headset", "Suporte especializado"],
+];
+
+const infrastructureSolutions: Array<[IconName, string, string]> = [
   [
     "server",
-    "Infraestrutura de TI",
-    "Ambientes organizados, documentados e preparados para sustentar a operação da empresa.",
+    "Servidores Enterprise",
+    "Performance para cargas críticas e ambientes exigentes.",
+  ],
+  [
+    "stack",
+    "Storage & SAN",
+    "Alta disponibilidade e proteção para dados críticos.",
   ],
   [
     "network",
-    "Redes e servidores",
-    "Projeto, manutenção e evolução de redes, servidores, estações e serviços essenciais.",
+    "Networking",
+    "Conectividade robusta para ambientes corporativos.",
   ],
   [
-    "headset",
-    "Suporte técnico",
-    "Atendimento próximo para reduzir paradas, resolver incidentes e orientar usuários.",
+    "cloud",
+    "Cloud Híbrida",
+    "Nuvem pública e privada com gestão unificada.",
+  ],
+  [
+    "stack",
+    "Virtualização",
+    "Isolamento e flexibilidade para evoluir a infraestrutura.",
+  ],
+  [
+    "monitor",
+    "Monitoramento",
+    "Visibilidade contínua para prevenir falhas.",
+  ],
+];
+
+const developmentHighlights: Array<[IconName, string]> = [
+  ["chart", "Escalabilidade"],
+  ["strategy", "Integração"],
+  ["pulse", "Automação"],
+];
+
+const developmentSolutions: Array<[IconName, string, string]> = [
+  [
+    "code",
+    "Aplicações Web",
+    "Sistemas robustos, escaláveis e centrados na experiência.",
+  ],
+  [
+    "monitor",
+    "Mobile & PWA",
+    "Apps rápidos, responsivos e prontos para qualquer dispositivo.",
+  ],
+  [
+    "chart",
+    "Data & Analytics",
+    "Transformamos dados em insights para decisões inteligentes.",
+  ],
+  [
+    "rocket",
+    "Automação & DevOps",
+    "Pipelines, CI/CD e automações que aceleram entregas com qualidade.",
   ],
   [
     "shield",
-    "Segurança e backup",
-    "Controles, cópias, rotinas e boas práticas para proteger dados e preservar continuidade.",
+    "Segurança",
+    "Proteção de dados, controle de acessos e conformidade desde o início.",
   ],
   [
-    "code",
-    "Soluções digitais",
-    "Sistemas, automações e integrações sob medida para fluxos que precisam ganhar eficiência.",
-  ],
-  [
-    "activity",
-    "Monitoramento",
-    "Acompanhamento de disponibilidade, ativos e riscos para antecipar problemas.",
+    "network",
+    "Integrações",
+    "Conectamos sistemas, plataformas e APIs para fluxos sem atrito.",
   ],
 ];
 
@@ -444,25 +489,139 @@ export default function EmpresasPage() {
 
       <section className="companies-section companies-services" id="servicos">
         <div className="companies-container">
-          <div className="companies-section-heading">
-            <SectionLabel>Serviços CIDI Tecnologia</SectionLabel>
-            <h2>Soluções completas para sustentar o crescimento da sua empresa.</h2>
+          <div className="companies-solutions-heading">
+            <div>
+              <SectionLabel>Soluções CIDI Tecnologia</SectionLabel>
+              <h2>Duas frentes estratégicas para sustentar e evoluir sua operação.</h2>
+            </div>
             <p>
-              A atuação da CIDI Tecnologia une suporte, infraestrutura, segurança e desenvolvimento para tirar a TI do
-              improviso e colocar a operação em um padrão mais previsível.
+              Atuamos na base da operação com infraestrutura, hardware e alta disponibilidade, e na evolução do negócio
+              com desenvolvimento de software sob medida, integração e automação.
             </p>
           </div>
-          <div className="companies-services-grid">
-            {services.map(([icon, title, text], index) => (
-              <article className="companies-service-card" style={{ "--i": index } as CSSProperties} key={title}>
-                <span className="companies-icon">
-                  <Icon name={icon} />
-                </span>
-                <h3>{title}</h3>
-                <p>{text}</p>
+
+          <fieldset className="companies-solutions-switcher">
+            <legend className="companies-sr-only">Escolha a frente de solução da CIDI Tecnologia</legend>
+            <input
+              className="companies-solution-radio"
+              type="radio"
+              id="solution-infrastructure"
+              name="companies-solution"
+              defaultChecked
+            />
+            <input
+              className="companies-solution-radio"
+              type="radio"
+              id="solution-development"
+              name="companies-solution"
+            />
+
+            <div className="companies-solution-toggle" aria-label="Soluções CIDI Tecnologia">
+              <label htmlFor="solution-infrastructure">
+                <Icon name="server" />
+                Infraestrutura & Hardware
+              </label>
+              <label htmlFor="solution-development">
+                <Icon name="code" />
+                Desenvolvimento de Software
+              </label>
+            </div>
+
+            <div className="companies-solution-panels">
+              <article className="companies-solution-panel companies-solution-panel-infrastructure">
+                <div className="companies-solution-copy">
+                  <h3>Infraestrutura confiável para desempenho, segurança e continuidade.</h3>
+                  <p>
+                    Soluções enterprise de hardware e infraestrutura para ambientes on-premise, data centers e cloud
+                    híbrida, com foco em disponibilidade, proteção e suporte especializado.
+                  </p>
+
+                  <div className="companies-solution-highlights">
+                    {infrastructureHighlights.map(([icon, label]) => (
+                      <span key={label}>
+                        <Icon name={icon} />
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="companies-solution-cards">
+                    {infrastructureSolutions.map(([icon, title, text], index) => (
+                      <article className="companies-solution-card" style={{ "--i": index } as CSSProperties} key={title}>
+                        <span className="companies-icon">
+                          <Icon name={icon} />
+                        </span>
+                        <div>
+                          <h4>{title}</h4>
+                          <p>{text}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+
+                  <div className="companies-solution-actions">
+                    <Button href={whatsappHref} icon="whatsapp">
+                      Falar com um especialista
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="companies-solution-visual">
+                  <img
+                    src={asset("/brand/solucoes-infraestrutura-hardware.png")}
+                    alt="Data center com racks de servidores para infraestrutura de alta disponibilidade"
+                  />
+                </div>
               </article>
-            ))}
-          </div>
+
+              <article className="companies-solution-panel companies-solution-panel-development">
+                <div className="companies-solution-copy">
+                  <h3>Desenvolvimento de software sob medida para operações que exigem escala, integração e resultado.</h3>
+                  <p>
+                    Desenvolvemos soluções digitais personalizadas para conectar sistemas, automatizar processos e gerar
+                    eficiência real para o seu negócio.
+                  </p>
+
+                  <div className="companies-solution-highlights">
+                    {developmentHighlights.map(([icon, label]) => (
+                      <span key={label}>
+                        <Icon name={icon} />
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="companies-solution-cards">
+                    {developmentSolutions.map(([icon, title, text], index) => (
+                      <article className="companies-solution-card" style={{ "--i": index } as CSSProperties} key={title}>
+                        <span className="companies-icon">
+                          <Icon name={icon} />
+                        </span>
+                        <div>
+                          <h4>{title}</h4>
+                          <p>{text}</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+
+                  <div className="companies-solution-actions">
+                    <Button href={whatsappHref}>Falar com um especialista</Button>
+                    <Button href={whatsappHref} variant="secondary">
+                      Conhecer possibilidades
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="companies-solution-visual">
+                  <img
+                    src={asset("/brand/solucoes-desenvolvimento-software.png")}
+                    alt="Notebook com plataforma de software, analytics, integrações e fluxo de desenvolvimento"
+                  />
+                </div>
+              </article>
+            </div>
+          </fieldset>
         </div>
       </section>
 
