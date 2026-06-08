@@ -23,9 +23,11 @@ type IconName =
   | "activity"
   | "arrow"
   | "building"
+  | "chart"
   | "check"
   | "checklist"
   | "code"
+  | "cloud"
   | "headset"
   | "instagram"
   | "lock"
@@ -157,6 +159,13 @@ function Icon({ name }: { name: IconName }) {
         <path d="M9 10h1M14 10h1M9 14h1M14 14h1" {...common} />
       </>
     ),
+    chart: (
+      <>
+        <path d="M4 20V6" {...common} />
+        <path d="M4 20h16" {...common} />
+        <path d="M8 17v-5M12 17V8M16 17v-8M20 17v-3" {...common} />
+      </>
+    ),
     check: (
       <>
         <path d="m5 13 4 4L19 7" {...common} />
@@ -171,6 +180,12 @@ function Icon({ name }: { name: IconName }) {
     code: (
       <>
         <path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 5l-2 14" {...common} />
+      </>
+    ),
+    cloud: (
+      <>
+        <path d="M17.5 18H8a5 5 0 1 1 1.1-9.9A6 6 0 0 1 20 11.5 3.5 3.5 0 0 1 17.5 18Z" {...common} />
+        <path d="m10 13 2 2 4-4" {...common} />
       </>
     ),
     headset: (
@@ -475,11 +490,60 @@ export default function EmpresasPage() {
         </div>
       </section>
 
-      <section className="companies-section companies-light" id="metodo">
+      <section className="companies-section companies-light companies-method-section" id="metodo">
         <div className="companies-container">
-          <div className="companies-section-heading companies-section-heading-left">
-            <SectionLabel>Como funciona</SectionLabel>
-            <h2>Um método simples para transformar TI em tranquilidade operacional.</h2>
+          <div className="companies-method-hero">
+            <div className="companies-section-heading companies-section-heading-left companies-method-heading">
+              <SectionLabel>Como funciona</SectionLabel>
+              <h2>
+                Um método simples para transformar <span>TI</span> em tranquilidade operacional.
+              </h2>
+              <span className="companies-heading-rule" aria-hidden="true" />
+            </div>
+
+            <div className="companies-method-visual" aria-label="Painel visual de indicadores e operação da CIDI Tecnologia">
+              <span className="companies-method-float companies-method-float-shield">
+                <Icon name="shield" />
+              </span>
+              <span className="companies-method-float companies-method-float-server">
+                <Icon name="server" />
+              </span>
+              <span className="companies-method-float companies-method-float-cloud">
+                <Icon name="cloud" />
+              </span>
+              <span className="companies-method-float companies-method-float-bars">
+                <Icon name="chart" />
+              </span>
+              <div className="companies-method-dashboard">
+                <span className="companies-method-sidebar">
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <div className="companies-method-widget companies-method-widget-chart">
+                  <svg viewBox="0 0 220 92" aria-hidden="true">
+                    <path d="M14 67 C42 52 52 34 81 45 C107 55 122 28 151 34 C176 40 181 14 206 20" />
+                    <circle cx="151" cy="34" r="7" />
+                  </svg>
+                </div>
+                <div className="companies-method-widget companies-method-widget-donut">
+                  <span />
+                  <i />
+                  <i />
+                </div>
+                <div className="companies-method-widget companies-method-widget-list">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div className="companies-method-widget companies-method-widget-bars">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="companies-method-line">
             {method.map(([icon, title, text], index) => (
